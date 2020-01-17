@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card" style="margin-top: 10px;">
+            <div class="card-header">Todos</div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="title" [(ngModel)]="newTodo.title" #title="ngModel"
+                        minlength="1" maxlength="50" required placeholder="What needs to be done?"
+                        (keyup.enter)="addTodo()">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="addTodo()" type="button">Add</button>
+                    </div>
+                </div>
+                <div class="checkbox" style="margin:0">
+                    <label>
+                        <input type="checkbox" (change)="showIdChanged($event.target.checked)" [checked]="showTodoId">
+                        <span style="margin-left: 10px;">Show Id</span>
+                    </label>
+                </div>
+                <table class="table table-sm">
+                    <tbody>
+                        <tr *ngFor="let todo of todos$ | async; let i = index">
+                            <td *ngIf="showTodoId">{{todo.id}}</td>
+                            <td style="vertical-align: middle;">
+                                <ng-container class="checkbox" style="margin:0">
+                                    <label style="margin: 0;">
+                                        <input type="checkbox" id='I{{i}}' [(ngModel)]="todo.complete"
+                                            #complete="ngModel" [checked]="todo.complete == true"
+                                            (change)="updateTodo(todo)">
+                                        <span style="margin-left: 10px;"
+                                            [ngStyle]="{'text-decoration': todo.complete === true ? 'line-through' : 'none' }">{{todo.title}}</span>
+                                    </label>
+                                </ng-container>
+                            </td>
+                            <td style="text-align: right;">
+                                <a (click)="deleteTodo(todo)">
+                                    <i class="fa fa-times" aria-hidden="true" style="color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="loading$ | async">
+                    <pre>in progress...</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
