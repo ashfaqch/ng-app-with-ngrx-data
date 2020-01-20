@@ -1,6 +1,9 @@
 # Angular To-Do list application with @ngrx/data
 In this example I have demonstrated the use of @ngrx/data management entity data.
 
+[![dependency Status](https://david-dm.org/ashfaqch/ng-app-with-ngrx-data.svg)](https://david-dm.org/ashfaqch/ng-app-with-ngrx-data#info=dependencies)
+[![devDependency Status](https://david-dm.org/ashfaqch/ng-app-with-ngrx-data/dev-status.svg)](https://david-dm.org/ashfaqch/ng-app-with-ngrx-data#info=devDependencies)
+
 [Demo](https://stackblitz.com/github/ashfaqch/ng-app-with-ngrx-data)
 
 ## Build & Run
